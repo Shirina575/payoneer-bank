@@ -105,10 +105,10 @@
             const amountNumber = parseFloat(amount);
             return amountNumber;
         }
-        function updateSpanText(id, depositeNumber){
+        function updateSpanText(id, amountInput){
             const currentAmount = document.getElementById(id).innerText;
             const currentAmountNumber = parseFloat(currentAmount);
-            const total = currentAmountNumber + depositeNumber;
+            const total = currentAmountNumber + amountInput;
             document.getElementById(id).innerText = total;
         }
     </script>
