@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Login Area Start -->
     <div id="login-area">
         <h1 class="text-center">Welcome to Payoneer Bank</h1>
         <div class="submit-area">
@@ -20,13 +21,15 @@
             <button id="login" class="btn btn-success">Login</button>
         </div>
     </div>
+    <!-- Login Area End -->
 
+    <!-- Transaction Area Start -->
     <div id="transaction-area">
         <div class="row">
             <div class="col-md-4">
                 <div class="deposit status">
                     <h5>Deposit</h5>
-                    <h2>$ <span id="currentDeposit">00</span>
+                    <h2>$ <span id="depositedAmount">00</span>
                     </h2>
                 </div>
             </div>
@@ -39,7 +42,7 @@
             <div class="col-md-4">
                 <div class="balance status">
                     <h5>Balance</h5>
-                    <h2>$ <span id="currentBalance">1240</span></h2>
+                    <h2>$ <span id="updatedBalance">1240</span></h2>
                 </div>
             </div>
         </div>
@@ -47,9 +50,9 @@
             <div class="col-md-6">
                 <div class="submit-area">
                     <h4>Deposit</h4>
-                    <input id="depositAmount" class="form-control" type="text" placeholder = 'Enter amount you want to deposit'>
+                    <input id="depositAmountInput" class="form-control" type="text" placeholder = 'Enter amount you want to deposit'>
                     <br>
-                    <button class="btn btn-success" id="addDeposit">Deposit</button>
+                    <button class="btn btn-success" id="depositBtn">Deposit</button>
                 </div>
             </div>
             <div class="col-md-6">
@@ -57,11 +60,14 @@
                     <h4>Withdraw</h4>
                     <input id="withdrawAmount" class="form-control" type="text" placeholder = 'Enter amount you want to withdraw'>
                     <br>
-                    <button id="addWithdraw" class="btn btn-success" id="">Withdraw</button>
+                    <button id="withdrawBtn" class="btn btn-success" id="">Withdraw</button>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Transaction Area Start -->
+
+
     <script>
         // Login Button event handler
         const loginBtn = document.getElementById('login');
@@ -72,22 +78,22 @@
             transactionArea.style.display = 'block';
         })
         // Deposit Button event handler
-        const depositBtn = document.getElementById('addDeposit');
+        const depositBtn = document.getElementById('depositBtn');
         depositBtn.addEventListener('click', function(){
-            const depositNumber = getInputNumber('depositAmount');
+            const depositNumber = getInputNumber('depositAmountInput');
 
-            updateSpanText('currentDeposit', depositNumber);
+            updateSpanText('depositedAmount', depositNumber);
 
-            updateSpanText('currentBalance', depositNumber);
-            cleanPlaceholderInput('depositAmount');
+            updateSpanText('updatedBalance', depositNumber);
+            cleanPlaceholderInput('depositAmountInput');
         })
 
         // Withdraw Button Event Handler
-        const withdrawBtn = document.getElementById('addWithdraw');
+        const withdrawBtn = document.getElementById('withdrawBtn');
         withdrawBtn.addEventListener('click', function(){
             const withdrawNumber =  getInputNumber('withdrawAmount');
             updateSpanText('currentWithdraw', withdrawNumber);
-            updateSpanText('currentBalance', (-1 * withdrawNumber));
+            updateSpanText('updatedBalance', (-1 * withdrawNumber));
             cleanPlaceholderInput('withdrawAmount');
         })
 
